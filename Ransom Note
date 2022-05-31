@@ -1,0 +1,15 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        
+        #The challenge is to check if the letters ransomNote can be found frequently enough in magazine.
+        
+        for Letter in ransomNote:
+            
+            #The ransomNote can not be formed if letter is not contained in magazine
+            if Letter not in magazine:
+                return(False)
+            
+            #If letter is in magazine, magazine needs letter removed from it to prevent repeat use of one letter.
+            else:
+                magazine = magazine.replace(Letter, "", 1)
+        return(True)
