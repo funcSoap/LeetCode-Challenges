@@ -1,0 +1,20 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        
+        #The challenge is to convert a number 's' from Roman Numerals to Integer: https://leetcode.com/problems/roman-to-integer/
+        
+        #Dictionary keyed to Roman Numeral, valued to integer associated with each numeral.
+        SymbolDictionary = dict([("I", 1), ("V", 5), ("X", 10), ("L", 50), ("C", 100), ("D", 500), ("M", 1000)])
+        Total = 0
+        
+        #For loop subtracts numeral value from total if next numeral is larger, or adds it if next numeral is smaller.
+        for i in range(len(s)-1):
+            SymbolVal = SymbolDictionary.get(s[i])
+            if SymbolDictionary.get(s[i+1]) > SymbolVal:
+                Total -= SymbolVal
+            else:
+                Total += SymbolVal
+                
+        #Final numeral is always added.
+        Total += SymbolDictionary.get(s[-1])
+        return(Total)
